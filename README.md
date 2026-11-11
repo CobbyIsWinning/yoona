@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Yoona landing page
 
-## Getting Started
+A responsive landing and about page built with Next.js 16 and React 19. Available at `/` and `/about`.
 
-First, run the development server:
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000/about.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Page features
 
-To learn more about Next.js, take a look at the following resources:
+- A fixed four-image fashion gallery that rotates through all seven fashion images, fading in one fresh photo every three seconds while the sharp highlight moves to the next position and the others blur. Each position renders only its current photo, and visible images stay distinct. Hover, tap, or keyboard-focus to select an image; pause controls, reduced-motion support, and Pinterest source links are preserved.
+- A sticky product belt with jackets moving vertically through a clipped viewport as you scroll, with manual colour selection and a static layout for reduced motion.
+- Keyboard-accessible Build, Decide, and Handoff tabs with illustrative workflow previews.
+- A keyboard-accessible popular-agents section featuring Yoona’s real analysis screenshots and verified capabilities for trend forecasting, sales confidence, and product optimisation.
+- A credited fashion film below the Build preview. It plays muted when visible, pauses offscreen, and offers native playback controls.
+- Audience-specific content for creative, merchandising, and brand teams.
+- About, whitepaper, demo, and contact sections using Yoona’s existing destinations.
+- Responsive navigation with Escape-to-close support, visible focus states, and a skip link.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Main files
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `app/page.tsx`: page content and sections.
+- `app/components/landing.tsx`: navigation, collage, and interactive sections.
+- `app/globals.css`: visual design and responsive layouts.
+- `docs/image-sources.md`: image provenance and design references.
 
-## Deploy on Vercel
+The workflow previews are illustrative presentation content. Demo requests, login, whitepaper, and contact actions link to Yoona’s live services.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Verification
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Production build and TypeScript checks. Browser checks cover image loading, workflow tab keyboard navigation, audience selection, static gallery layout, mobile navigation, reduced motion, and horizontal overflow from 320px to 1920px.
