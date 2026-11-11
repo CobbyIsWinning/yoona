@@ -1,5 +1,8 @@
 "use client";
 
+import { pageWidth, eyebrow, textLink, sectionHeading } from "./styles";
+import { YoonaLogo } from "./brand";
+
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -17,7 +20,7 @@ function useReducedMotion() {
 
 export function Icon({
   name = "arrow",
-  className = "",
+  className = "size-5",
 }: {
   name?: string;
   className?: string;
@@ -56,7 +59,7 @@ export function Icon({
   };
   return (
     <svg
-      className={`icon ${className}`}
+      className={`icon shrink-0 ${className}`}
       width="24"
       height="24"
       viewBox="0 0 24 24"
@@ -84,70 +87,97 @@ export function Header() {
   }, [open]);
   return (
     <>
-      <a className="skip-link" href="#main">
+      <a
+        className="skip-link p-3 fixed z-100 top-2.5 left-2.5 transform-[translateY(-150%)] bg-accent focus:transform-[translateY(0)]"
+        href="#main"
+      >
         Skip to content
       </a>
-      <header className="header">
-        <div className="header-inner page-width">
+      <header className="header sticky top-0 z-40 bg-[#ffffffed] backdrop-blur-[20px] border-b border-b-line">
+        <div
+          className={`${pageWidth} header-inner h-22 flex items-center justify-between gap-10 laptop:h-19.5 laptop:gap-6.25 tablet:h-18 phone:h-17.5 phone:gap-3`}
+        >
           <a
-            className="wordmark"
+            className="wordmark block shrink-0"
             href="#"
             aria-label="Yoona home"
             onClick={() => setOpen(false)}
           >
-            yoona<span>®</span>
+            <YoonaLogo
+              className="w-44 tablet:w-40 phone:w-[clamp(100px,28vw,156px)]"
+              preload
+            />
           </a>
           <nav
             id="main-navigation"
-            className={`main-nav ${open ? "is-open" : ""}`}
+            className={`main-nav flex gap-8 ml-15 laptop:gap-5.5 laptop:ml-0 tablet:gap-4.5 phone:px-6.25 phone:hidden phone:absolute phone:left-0 phone:right-0 phone:top-17.5 phone:bg-background phone:pt-6.25 phone:pb-7.5 phone:border-b phone:border-b-line phone:shadow-[0_8px_16px_#252a1a08] phone:[&.is-open]:flex phone:[&.is-open]:flex-col phone:[&.is-open]:gap-5.75 ${open ? "is-open" : ""}`}
             aria-label="Main navigation"
           >
-            <a href="#platform" onClick={() => setOpen(false)}>
+            <a
+              className="text-[12px] [transition:color_0.2s] tablet:text-[10px] phone:text-[15px] hover:text-[#738b36]"
+              href="#platform"
+              onClick={() => setOpen(false)}
+            >
               The platform
             </a>
-            <a href="#teams" onClick={() => setOpen(false)}>
+            <a
+              className="text-[12px] [transition:color_0.2s] tablet:text-[10px] phone:text-[15px] hover:text-[#738b36]"
+              href="#teams"
+              onClick={() => setOpen(false)}
+            >
               For your team
             </a>
-            <a href="#about" onClick={() => setOpen(false)}>
+            <a
+              className="text-[12px] [transition:color_0.2s] tablet:text-[10px] phone:text-[15px] hover:text-[#738b36]"
+              href="#about"
+              onClick={() => setOpen(false)}
+            >
               Our story
             </a>
-            <a href="#resources" onClick={() => setOpen(false)}>
+            <a
+              className="text-[12px] [transition:color_0.2s] tablet:text-[10px] phone:text-[15px] hover:text-[#738b36]"
+              href="#resources"
+              onClick={() => setOpen(false)}
+            >
               Resources
             </a>
             <a
-              className="mobile-login"
+              className="mobile-login text-[12px] [transition:color_0.2s] hidden tablet:text-[10px] phone:text-[12px] phone:flex phone:gap-2 phone:items-center phone:text-[#7b856a] hover:text-[#738b36]"
               href="https://design.yoona.ai/"
               target="_blank"
               rel="noreferrer"
             >
-              Log in <Icon name="diagonal" />
+              Log in <Icon className="size-5 phone:size-3.5" name="diagonal" />
             </a>
           </nav>
-          <div className="header-actions">
+          <div className="header-actions flex items-center gap-7 laptop:gap-5 tablet:gap-3">
             <a
-              className="login-link"
+              className="login-link flex items-center gap-1.75 text-[12px] tablet:hidden"
               href="https://design.yoona.ai/"
               target="_blank"
               rel="noreferrer"
             >
-              Log in <Icon name="diagonal" />
+              Log in <Icon className="size-3.75" name="diagonal" />
             </a>
             <a
-              className="button button-dark nav-demo"
+              className="button button-dark nav-demo whitespace-nowrap px-4.5 py-3.25 inline-flex items-center justify-center gap-6.5 rounded-[5px] text-[13px] [transition:background_0.2s,transform_0.2s] bg-foreground text-white tablet:px-3.5 tablet:py-2.75 tablet:gap-4 tablet:text-[11px] phone:px-3.25 phone:py-2.5 phone:text-[10px] hover:transform-[translateY(-2px)] hover:bg-[#414141]"
               href="https://www.yoona.ai/demo"
               target="_blank"
               rel="noreferrer"
             >
-              Request demo <Icon />
+              Request demo <Icon className="size-4.25 phone:size-3.75" />
             </a>
             <button
-              className="menu-toggle"
+              className="menu-toggle hidden phone:p-1 phone:grid phone:place-items-center phone:bg-transparent"
               aria-label={open ? "Close navigation" : "Open navigation"}
               aria-expanded={open}
               aria-controls="main-navigation"
               onClick={() => setOpen(!open)}
             >
-              <Icon name={open ? "close" : "menu"} />
+              <Icon
+                className="size-5 phone:size-5.5"
+                name={open ? "close" : "menu"}
+              />
             </button>
           </div>
         </div>
@@ -249,7 +279,7 @@ export function FashionCollage() {
   return (
     <div
       ref={galleryRef}
-      className="fashion-gallery page-width"
+      className={`${pageWidth} fashion-gallery grid grid-cols-[repeat(4,minmax(0,1fr))] gap-4 mt-11.5 phone:grid-cols-[repeat(2,minmax(0,1fr))] phone:gap-3 phone:mt-7`}
       role="group"
       aria-label="Fashion inspiration"
     >
@@ -259,26 +289,27 @@ export function FashionCollage() {
           <figure
             key={index}
             data-image-index={imageIndex}
-            className={focusedImage === index ? "is-focused" : ""}
+            className={`m-0 min-w-0 relative z-0 [&.is-focused]:z-1 ${focusedImage === index ? "is-focused" : ""}`}
             onPointerEnter={(event) => {
               if (event.pointerType === "mouse") focusImage(index);
             }}
             onFocusCapture={() => focusImage(index)}
           >
             <button
-              className="fashion-gallery-select"
+              className="fashion-gallery-select p-0 block w-full border-0 rounded-[5px] bg-transparent"
               aria-label={`Focus fashion image ${index + 1}`}
               aria-pressed={focusedImage === index}
               onClick={() => focusImage(index)}
             >
               <div
-                className={`fashion-gallery-photo ${item.flatlay ? "is-flatlay" : ""}`}
+                className={`fashion-gallery-photo relative h-[clamp(260px,28vw,380px)] overflow-hidden rounded-[5px] [filter:blur(2.2px)] opacity-50 transform-[scale(0.94)] [transition:filter_0.3s_ease,opacity_0.3s_ease,transform_0.3s_ease,box-shadow_0.3s_ease] phone:h-60 in-[figure.is-focused]:filter-none in-[figure.is-focused]:opacity-100 in-[figure.is-focused]:transform-[scale(1.035)] in-[figure.is-focused]:shadow-[0_16px_35px_#24242420] ${item.flatlay ? "is-flatlay" : ""}`}
                 style={{
                   backgroundColor:
                     item.backdrop || (item.flatlay ? "#e9e1ce" : "#f5f5f5"),
                 }}
               >
                 <Image
+                  className="object-cover object-[50%_32%] animate-[fashion-photo-reveal_0.65s_ease] in-[.fashion-gallery-photo.is-flatlay]:object-contain in-[.fashion-gallery-photo.is-flatlay]:object-[center]"
                   key={item.src}
                   src={item.src}
                   alt={item.alt}
@@ -291,18 +322,19 @@ export function FashionCollage() {
                 />
               </div>
             </button>
-            <figcaption className="fashion-gallery-caption">
+            <figcaption className="fashion-gallery-caption flex items-center justify-between gap-2 min-h-8 text-[11px] text-[#59614f] mt-2">
               <span>
                 {item.source ? "Outfit inspiration" : "A new perspective"}
               </span>
               {item.source && (
                 <a
+                  className="grid place-items-center size-7.5"
                   href={item.source}
                   target="_blank"
                   rel="noreferrer"
                   aria-label={`View original inspiration for image ${index + 1}`}
                 >
-                  <Icon name="diagonal" />
+                  <Icon className="size-3.25" name="diagonal" />
                 </a>
               )}
             </figcaption>
@@ -310,7 +342,7 @@ export function FashionCollage() {
         );
       })}
       <button
-        className="gallery-rotation-toggle"
+        className="gallery-rotation-toggle px-2.5 py-1.5 col-span-full justify-self-end inline-flex items-center gap-1.75 border border-line rounded-[4px] bg-white text-[#59614f] text-[11px] disabled:opacity-60"
         onClick={() => setPaused((current) => !current)}
         disabled={reducedMotion}
         aria-label={
@@ -321,7 +353,10 @@ export function FashionCollage() {
               : "Pause image highlights"
         }
       >
-        <Icon name={paused || reducedMotion ? "play" : "pause"} />
+        <Icon
+          className="size-3.25"
+          name={paused || reducedMotion ? "play" : "pause"}
+        />
         {reducedMotion
           ? "Manual selection"
           : paused
@@ -423,29 +458,40 @@ export function ScrollBelt() {
   return (
     <section
       ref={sectionRef}
-      className="scroll-belt"
+      className="scroll-belt mt-16 bg-white border-t border-t-line border-b border-b-line [transition:background-color_0.6s_ease] laptop:mt-12.5 phone:mt-8.5"
       id="possibilities"
       aria-labelledby="belt-heading"
       data-colourway={active}
       style={{ backgroundColor: colourways[active].background }}
     >
-      <div ref={stageRef} className="belt-stage">
-        <div className="belt-layout page-width">
+      <div
+        ref={stageRef}
+        className="belt-stage sticky top-22 pt-10.5 pb-14.5 laptop:top-19.5 tablet:top-18 phone:top-17.5 phone:pt-7.5 phone:pb-11 short-phone:pt-5.5"
+      >
+        <div
+          className={`${pageWidth} belt-layout h-full grid grid-cols-[1fr_1.15fr] items-center gap-15 laptop:gap-8.75 tablet:grid-cols-[1fr_1fr] tablet:gap-5.5 phone:grid-cols-[1fr] phone:items-start phone:gap-3.25 phone:grid-rows-[auto_1fr]`}
+        >
           <div className="belt-copy">
-            <p className="eyebrow">
-              <span className="status-dot" /> ONE IDEA. ENDLESS DIRECTIONS.
+            <p
+              className={`${eyebrow} gap-2.25 text-[8px] tracking-[1.7px] mb-6.5 tablet:text-[6px] tablet:tracking-[1px] tablet:mb-5 phone:text-[7px] phone:mb-4 short-phone:text-[6px] short-phone:mb-3`}
+            >
+              <span className="status-dot inline-block size-1.75 bg-sage rounded-full shrink-0" />{" "}
+              ONE IDEA. ENDLESS DIRECTIONS.
             </p>
-            <h2 id="belt-heading">
+            <h2
+              className="text-[clamp(38px,4.2vw,61px)] leading-[1.08] tracking-[-2.5px] font-normal laptop:text-[44px] tablet:text-[36px] tablet:tracking-[-1.8px] short-phone:text-[31px]"
+              id="belt-heading"
+            >
               Same instinct.
               <br />
               New <em>possibilities.</em>
             </h2>
-            <p>
+            <p className="max-w-81.25 text-[15px] leading-[1.8] text-copy mt-5.75 tablet:text-[14px] tablet:mt-4.5 phone:max-w-77.5 phone:mt-3.75 short-phone:mt-2.75">
               A different colour. A fresh point of view. Explore what your next
               collection could become.
             </p>
             <div
-              className="belt-swatches"
+              className="belt-swatches flex gap-2 mt-6.5 tablet:gap-0.75 tablet:mt-5 phone:gap-1.5 phone:mt-4 short-phone:mt-2.75"
               aria-label="Choose a jacket colourway"
             >
               {colourways.map((colourway, index) => (
@@ -453,24 +499,29 @@ export function ScrollBelt() {
                   key={colourway.name}
                   onClick={() => selectColourway(index)}
                   aria-pressed={active === index}
-                  className={active === index ? "active" : ""}
+                  className={`px-2.75 py-2.25 flex items-center gap-2 text-[10px] bg-transparent border border-transparent rounded-[30px] [transition:border-color_0.2s] tablet:px-2 tablet:py-1.75 tablet:gap-1.25 tablet:text-[8px] phone:px-2.5 phone:py-2 phone:gap-1.75 phone:text-[9px] [&.active]:border-[#9ca18e] ${active === index ? "active" : ""}`}
                 >
-                  <span style={{ backgroundColor: colourway.colour }} />
+                  <span
+                    className="size-3.25 rounded-full border border-[#4b514a18] tablet:size-2.75"
+                    style={{ backgroundColor: colourway.colour }}
+                  />
                   {colourway.name}
                 </button>
               ))}
             </div>
-            <span className="belt-scroll-cue">
+            <span className="belt-scroll-cue inline-flex items-center gap-3.75 mt-8 text-[7px] tracking-[1.5px] text-[#747d66] phone:gap-2.5 phone:mt-4 phone:text-[6px] short-phone:mt-2.75">
               {reducedMotion
                 ? "CHOOSE A COLOUR TO EXPLORE"
                 : "SCROLL TO REIMAGINE"}
-              <Icon name="down" />
+              <Icon className="size-3.5 phone:size-3" name="down" />
             </span>
           </div>
-          <div className="belt-product">
-            <span className="belt-product-label">THE COLOUR STUDY / 01</span>
+          <div className="belt-product w-full max-w-122.5 relative justify-self-center laptop:max-w-107.5 phone:w-[min(78vw,300px)] phone:self-center">
+            <span className="belt-product-label absolute top-0 left-6.25 text-[7px] tracking-[1.4px] text-[#7d856f] tablet:left-3 tablet:text-[6px] phone:text-[5px]">
+              THE COLOUR STUDY / 01
+            </span>
             <div
-              className="belt-garment"
+              className="belt-garment w-full aspect-[1] relative overflow-hidden"
               role="img"
               aria-label={`Puffer jacket concept in ${colourways[active].name.toLowerCase()}`}
             >
@@ -484,23 +535,35 @@ export function ScrollBelt() {
                 ))}
               </div>
             </div>
-            <div className="belt-product-caption" aria-live="polite">
+            <div
+              className="belt-product-caption absolute bottom-0 left-6.25 right-6.25 flex justify-between items-center gap-3.75 text-[10px] text-[#6e7565] tablet:left-3 tablet:right-3 tablet:text-[8px]"
+              aria-live="polite"
+            >
               <span>{colourways[active].caption}</span>
-              <span>0{active + 1} / 03</span>
+              <span className="text-[8px] font-mono tablet:text-[7px]">
+                0{active + 1} / 03
+              </span>
             </div>
           </div>
         </div>
-        <div className="belt-footer page-width">
+        <div
+          className={`${pageWidth} belt-footer absolute bottom-5.5 left-0 right-0 flex justify-between items-center gap-6.25 text-[7px] tracking-[1.1px] text-[#747d66] tablet:text-[6px] phone:bottom-4.25 phone:gap-3.75 phone:text-[5px] phone:tracking-[0.6px]`}
+        >
           <span>AI-GENERATED GARMENT STUDY</span>
-          <div className="belt-progress" aria-hidden="true">
-            <span />
+          <div
+            className="belt-progress flex-1 max-w-52.5 h-0.5 bg-[#737d5c20] overflow-hidden tablet:max-w-30 phone:max-w-13.75"
+            aria-hidden="true"
+          >
+            <span className="block h-full bg-[#737d5c]" />
           </div>
           <a
+            className="inline-flex items-center gap-2 tracking-[0] text-[9px] tablet:text-[8px] phone:gap-1 phone:text-[7px] hover:underline"
             href="https://www.pinterest.com/pin/1093671090781202495/"
             target="_blank"
             rel="noreferrer"
           >
-            Motion inspiration <Icon name="diagonal" />
+            Motion inspiration{" "}
+            <Icon className="size-3 phone:size-2.5" name="diagonal" />
           </a>
         </div>
       </div>
@@ -552,32 +615,43 @@ function BuildFilm() {
   }, [reducedMotion]);
 
   return (
-    <figure className="build-film" aria-labelledby="build-film-heading">
+    <figure
+      className="build-film mx-0 grid grid-cols-[0.65fr_1.35fr] gap-12 items-center mt-14.5 mb-0 pt-11 border-t border-t-line laptop:gap-8 tablet:grid-cols-[0.8fr_1.2fr] tablet:gap-6.5 phone:grid-cols-[1fr] phone:gap-6.25 phone:mt-9 phone:pt-7.25"
+      aria-labelledby="build-film-heading"
+    >
       <figcaption className="build-film-copy">
-        <p className="eyebrow">THE CREATIVE PROCESS, IN MOTION</p>
-        <h3 id="build-film-heading">
+        <p
+          className={`${eyebrow} gap-2.25 text-[7px] tracking-[1.3px] mb-4.75 tablet:text-[6px] tablet:tracking-[0.8px] phone:text-[7px] phone:mb-3.75`}
+        >
+          THE CREATIVE PROCESS, IN MOTION
+        </p>
+        <h3
+          className="text-[29px] font-normal leading-[1.2] tracking-[-1.1px] laptop:text-[26px] tablet:text-[24px] phone:text-[28px]"
+          id="build-film-heading"
+        >
           From a little inspiration.
           <br />
           To <em>something real.</em>
         </h3>
-        <p>
+        <p className="text-[15px] leading-[1.8] text-copy max-w-75 mt-4.25 tablet:text-[14px] phone:max-w-77.5 phone:mt-3.5">
           A look behind the scenes of a fashion shoot. The people, the details,
           and the craft behind a collection.
         </p>
         <a
-          className="text-link"
+          className={`${textLink} gap-7 text-[10px] mt-3.75 phone:mt-2.5`}
           href="https://www.pinterest.com/pin/1001839879579990109/"
           target="_blank"
           rel="noreferrer"
         >
-          Watch the original <Icon name="diagonal" />
+          Watch the original <Icon className="size-5" name="diagonal" />
         </a>
-        <span className="build-film-credit">
+        <span className="build-film-credit block text-[8px] text-[#7e8573] mt-4.75 phone:text-[7px] phone:mt-3.5">
           HTHR · Lindsey Schumacher Media
         </span>
       </figcaption>
-      <div className="build-film-player">
+      <div className="build-film-player min-w-0">
         <video
+          className="block w-full aspect-[16/9] bg-[#dad7ce] object-contain rounded-[4px]"
           ref={videoRef}
           controls
           muted
@@ -601,26 +675,30 @@ function BuildFilm() {
             Watch the fashion film on Pinterest.
           </a>
         </video>
-        <div className="build-film-status">
-          <span>
-            <span className={`status-dot ${playing ? "is-playing" : ""}`} />
+        <div className="build-film-status flex justify-between gap-3.5 mt-3 text-[6px] tracking-[1px] text-[#7e8573] tablet:text-[5px] tablet:tracking-[0.5px] phone:mt-2.5">
+          <span className="flex items-center gap-1.5">
+            <span
+              className={`status-dot inline-block size-1 bg-[#a2a795] rounded-full shrink-0 [&.is-playing]:bg-[#748c43] ${playing ? "is-playing" : ""}`}
+            />
             {failed
               ? "WATCH VIA THE ORIGINAL LINK"
               : playing
                 ? "THE CREATIVE PROCESS / PLAYING"
                 : "THE CREATIVE PROCESS / PRESS PLAY"}
           </span>
-          <span>SOUND OFF BY DEFAULT</span>
+          <span className="tablet:hidden phone:block">
+            SOUND OFF BY DEFAULT
+          </span>
         </div>
       </div>
     </figure>
   );
 }
 
-function GarmentSketch() {
+function GarmentSketch({ className = "" }: { className?: string }) {
   return (
     <svg
-      className="garment-sketch"
+      className={`garment-sketch ${className}`}
       viewBox="0 0 240 280"
       fill="none"
       aria-label="Technical fashion drawing of a tailored jacket"
@@ -714,7 +792,7 @@ export function Workflow() {
   return (
     <div className="workflow">
       <div
-        className="workflow-tabs"
+        className="workflow-tabs grid grid-cols-[repeat(3,1fr)] border-b border-b-line gap-8.5 tablet:gap-5 phone:gap-3.75"
         role="tablist"
         aria-label="Explore the Yoona workflow"
       >
@@ -724,7 +802,7 @@ export function Workflow() {
             ref={(el) => {
               tabRefs.current[i] = el;
             }}
-            className={`workflow-tab ${i === active ? "active" : ""}`}
+            className={`workflow-tab px-0 py-5.5 bg-transparent flex items-center gap-3.25 relative text-left text-[#717568] tablet:py-4.5 tablet:gap-2.5 phone:py-3.75 phone:gap-1.75 [&.active]:text-foreground after:content-[""] after:absolute after:bottom-[-1px] after:h-0.5 after:left-0 after:right-0 after:bg-transparent after:[transition:background_0.2s] [&.active]:after:bg-[#798c46] ${i === active ? "active" : ""}`}
             role="tab"
             id={`workflow-tab-${i}`}
             aria-controls="workflow-panel"
@@ -747,28 +825,52 @@ export function Workflow() {
               tabRefs.current[next]?.focus();
             }}
           >
-            <span className="tab-index">0{i + 1}</span>
-            <Icon name={step.icon} />
-            <span>{step.name}</span>
-            <Icon name="arrow" />
+            <span className="tab-index text-[9px] mr-3.5 font-mono tablet:text-[8px] tablet:mr-0.5 phone:text-[6px] phone:mr-0">
+              0{i + 1}
+            </span>
+            <Icon
+              className="size-5 tablet:size-4.25 phone:size-3.25"
+              name={step.icon}
+            />
+            <span className="text-[21px] tracking-[-0.6px] tablet:text-[19px] phone:text-[17px]">
+              {step.name}
+            </span>
+            <Icon
+              className="size-4.5 ml-auto transform-[rotate(-45deg)] phone:hidden in-[.workflow-tab.active]:transform-[none]"
+              name="arrow"
+            />
           </button>
         ))}
       </div>
       <div
-        className="workflow-panel"
+        className="workflow-panel grid grid-cols-[0.85fr_1.3fr] gap-16.25 pt-10.5 items-center laptop:grid-cols-[0.9fr_1.1fr] laptop:gap-8.75 tablet:gap-6 tablet:pt-7.5 phone:grid-cols-[1fr] phone:gap-7.5 phone:pt-7"
         role="tabpanel"
         id="workflow-panel"
         aria-labelledby={`workflow-tab-${active}`}
         tabIndex={0}
       >
-        <div className="workflow-copy" key={item.name}>
-          <p className="eyebrow">{item.name.toUpperCase()} WITH YOONA</p>
-          <h3>{item.subtitle}</h3>
-          <p>{item.description}</p>
-          <ul>
+        <div
+          className="workflow-copy animate-[fade-in_0.4s_ease]"
+          key={item.name}
+        >
+          <p
+            className={`${eyebrow} gap-2.25 text-[9px] tracking-[1.7px] text-[#7b855e] mb-4.5 phone:text-[7px] phone:mb-3.25`}
+          >
+            {item.name.toUpperCase()} WITH YOONA
+          </p>
+          <h3 className="text-[31px] font-normal leading-[1.2] tracking-[-1.2px] max-w-87.5 mb-4.5 tablet:text-[26px] phone:text-[28px] phone:max-w-75">
+            {item.subtitle}
+          </h3>
+          <p className="text-copy text-[15px] leading-[1.8] max-w-87.5 tablet:text-[14px] phone:max-w-full">
+            {item.description}
+          </p>
+          <ul className="mx-0 my-6.5 p-0 list-none tablet:my-4.75 phone:my-5.25">
             {item.features.map((feature) => (
-              <li key={feature}>
-                <Icon name="check" />
+              <li
+                className="my-3.25 flex items-center gap-2.75 text-[11px] tablet:gap-2 tablet:text-[9px] phone:text-[10px]"
+                key={feature}
+              >
+                <Icon className="size-3.25 text-[#718d40]" name="check" />
                 {feature}
               </li>
             ))}
@@ -777,56 +879,69 @@ export function Workflow() {
             href="https://www.yoona.ai/demo"
             target="_blank"
             rel="noreferrer"
-            className="text-link"
+            className={`${textLink} gap-7 text-[11px]`}
           >
-            See the possibilities <Icon name="arrow" />
+            See the possibilities <Icon className="size-5" name="arrow" />
           </a>
         </div>
-        <div className={`product-preview preview-${active}`}>
-          <div className="product-window">
-            <div className="product-toolbar">
-              <span className="mini-wordmark">yoona</span>
-              <span>
-                <span className="tiny-dot" /> Your creative workspace
+        <div className="product-preview px-8 bg-surface rounded-[5px] pt-8.75 pb-4.5 overflow-hidden [transition:background_0.4s] laptop:px-4.5 laptop:pt-6.25 laptop:pb-3.75 tablet:px-3.25 tablet:pt-5 tablet:pb-3.25 phone:px-5 phone:pt-6 phone:pb-4">
+          <div className="product-window bg-white border border-[#d9dccf] rounded-[5px] shadow-[0_8px_30px_#343a2110] min-w-0">
+            <div className="product-toolbar px-3.75 h-9.75 border-b border-b-[#e8e9e2] flex items-center justify-between tablet:px-2.5 phone:px-3.25 phone:h-9.5">
+              <YoonaLogo className="mini-wordmark w-17 phone:w-14" />
+              <span className="text-[7px] text-[#8e9285] flex gap-1.25 items-center tablet:text-[5px] phone:text-[6px]">
+                <span className="tiny-dot inline-block size-1.25 rounded-full bg-[#9cae70]" />{" "}
+                Your creative workspace
               </span>
-              <Icon name="grid" />
+              <Icon className="size-3 text-[#8d9381]" name="grid" />
             </div>
-            <div className="product-body">
-              <div className="product-title">
+            <div className="product-body px-5.5 pt-5.5 pb-3.25 laptop:px-3.25 laptop:pt-4.5 laptop:pb-2.75 tablet:px-2.5 tablet:pt-4 tablet:pb-2.5 phone:px-3.75 phone:pt-4.75 phone:pb-3">
+              <div className="product-title flex gap-3.75 justify-between items-center text-[12px] tracking-[-0.3px] mb-5.5 laptop:gap-1.75 laptop:text-[10px] tablet:text-[9px] tablet:mb-4.25 tablet:flex-wrap phone:text-[10px] phone:flex-nowrap">
                 <span>{item.caption}</span>
-                <span className="concept-tag">ILLUSTRATIVE CONCEPT</span>
+                <span className="concept-tag p-1 text-[7px] tracking-[0.6px] whitespace-nowrap text-[#989e8a] border border-[#e4e7db] laptop:text-[4px]">
+                  ILLUSTRATIVE CONCEPT
+                </span>
               </div>
-              <div className="product-prompt">
-                <span className="avatar">Y</span>
-                <p>{item.prompt}</p>
+              <div className="product-prompt flex items-center gap-2.25 mb-5 tablet:gap-1.5 tablet:mb-3.5">
+                <span className="avatar grid place-items-center bg-[#f2f2f2] rounded-full size-5.25 text-[8px]">
+                  Y
+                </span>
+                <p className="text-[8px] text-[#85897a] tablet:text-[6px] phone:text-[7px]">
+                  {item.prompt}
+                </p>
               </div>
-              <div className="product-answer">
-                <Icon name="spark" />
+              <div className="product-answer flex gap-2 items-start mb-3.75 tablet:gap-1.5">
+                <Icon className="size-3.75 text-[#7e8e58]" name="spark" />
                 <div>
-                  <strong>{item.response}</strong>
-                  <p>{item.detail}</p>
+                  <strong className="text-[9px] font-medium tablet:text-[7px] phone:text-[8px]">
+                    {item.response}
+                  </strong>
+                  <p className="text-[7px] text-[#8c9181] leading-[1.6] mt-1 tablet:text-[6px]">
+                    {item.detail}
+                  </p>
                 </div>
               </div>
-              <div className="product-moodboard">
-                <div className="product-photo">
+              <div className="product-moodboard grid grid-cols-[1.25fr_1fr_0.65fr] gap-1.75 h-43.25 pl-5.75 mb-4.25 laptop:h-36.25 tablet:h-30 tablet:pl-0 phone:h-37.5 phone:pl-5 phone:mt-4">
+                <div className="product-photo relative overflow-hidden rounded-[2px]">
                   <Image
+                    className="[filter:saturate(0.55)] object-[50%_25%]"
                     src={item.image}
                     alt={`Fashion imagery illustrating the ${item.name.toLowerCase()} workflow`}
                     fill
                     sizes="(max-width: 700px) 45vw, 22vw"
                   />
                 </div>
-                <div className="product-detail">
-                  <GarmentSketch />
-                  <div className="product-palette">
-                    <i />
-                    <i />
-                    <i />
-                    <i />
+                <div className="product-detail p-2 bg-surface flex flex-col items-center overflow-hidden rounded-[2px] tablet:p-1.25">
+                  <GarmentSketch className="w-full h-32.5 min-h-0 text-[#6c715e] laptop:h-25.75 tablet:h-21 phone:h-28.25" />
+                  <div className="product-palette flex gap-0.75 w-[80%] mt-1.75">
+                    <i className="h-3.75 flex-1 bg-[#9ba480] tablet:h-2.75 phone:h-3.25" />
+                    <i className="h-3.75 flex-1 bg-[#d1b494] tablet:h-2.75 phone:h-3.25" />
+                    <i className="h-3.75 flex-1 bg-[#d9d8cd] tablet:h-2.75 phone:h-3.25" />
+                    <i className="h-3.75 flex-1 bg-[#5b675a] tablet:h-2.75 phone:h-3.25" />
                   </div>
                 </div>
-                <div className="product-side-photo">
+                <div className="product-side-photo relative overflow-hidden rounded-[2px]">
                   <Image
+                    className="[filter:saturate(0.55)]"
                     src="/images/garment-jacket.jpg"
                     alt="Jacket construction and material details"
                     fill
@@ -834,15 +949,15 @@ export function Workflow() {
                   />
                 </div>
               </div>
-              <div className="product-input">
+              <div className="product-input py-1.5 h-8.5 border border-[#e3e6da] rounded-[4px] pr-1.75 pl-2.5 flex items-center justify-between text-[#a0a593] text-[8px] phone:h-7.75 phone:text-[7px]">
                 <span>Where shall we go next?</span>
-                <span className="input-arrow">
-                  <Icon name="arrow" />
+                <span className="input-arrow size-5.25 grid place-items-center bg-[#dbe7bc] rounded-[3px]">
+                  <Icon className="size-3 text-[#788c4b]" name="arrow" />
                 </span>
               </div>
             </div>
           </div>
-          <span className="preview-footnote">
+          <span className="preview-footnote block text-center text-[6px] tracking-[1.4px] mt-3.75 text-[#8d957a] tablet:text-[4px] tablet:tracking-[1px] phone:text-[5px] phone:tracking-[0.9px]">
             YOUR CREATIVITY. A LITTLE MORE CONNECTED.
           </span>
         </div>
@@ -907,28 +1022,36 @@ export function PopularAgents() {
 
   return (
     <section
-      className="agents-section"
+      className="agents-section mt-22 pt-16.5 border-t border-t-line tablet:mt-16.25 tablet:pt-11.25 phone:mt-11.25 phone:pt-8.25"
       id="agents"
       aria-labelledby="agents-heading"
     >
-      <div className="section-heading">
+      <div className={`${sectionHeading} mb-9.5 phone:mb-6`}>
         <div>
-          <p className="eyebrow">YOONA’S MOST POPULAR AGENTS</p>
-          <h2 id="agents-heading">
+          <p
+            className={`${eyebrow} gap-2.25 text-[10px] tracking-[1.7px] mb-4.75 tablet:text-[8px] tablet:mb-4 phone:text-[7px] phone:tracking-[1.3px]`}
+          >
+            YOONA’S MOST POPULAR AGENTS
+          </p>
+          <h2
+            className="text-[clamp(36px,3.7vw,53px)] leading-[1.08] tracking-[-2.5px] font-normal phone:text-[37px] phone:tracking-[-1.8px]"
+            id="agents-heading"
+          >
             Intelligence you can
             <br />
             <em>put to work.</em>
           </h2>
         </div>
-        <p>
+        <p className="text-[15px] text-copy leading-[1.8] mb-1.25 tablet:text-[14px] tablet:max-w-65 phone:max-w-82.5">
           Three agents, connected to help your teams
-          <br className="desktop-break" /> research, assess, and improve.
+          <br className="desktop-break tablet:hidden" /> research, assess, and
+          improve.
         </p>
       </div>
-      <div className="agents-layout">
-        <div className="agents-sidebar">
+      <div className="agents-layout grid grid-cols-[0.85fr_1.65fr] gap-12 items-start laptop:grid-cols-[0.95fr_1.55fr] laptop:gap-8 tablet:grid-cols-[0.95fr_1.5fr] tablet:gap-5.75 phone:grid-cols-[1fr] phone:gap-7.25">
+        <div className="agents-sidebar min-w-0">
           <div
-            className="agent-tabs"
+            className="agent-tabs flex flex-col gap-2 phone:gap-1.5"
             role="tablist"
             aria-label="Explore Yoona’s popular agents"
             aria-orientation="vertical"
@@ -939,7 +1062,7 @@ export function PopularAgents() {
                 ref={(element) => {
                   tabRefs.current[index] = element;
                 }}
-                className={`agent-tab ${active === index ? "active" : ""}`}
+                className={`agent-tab px-4 py-6 flex items-center gap-3.75 w-full bg-transparent border border-t-transparent border-r-transparent border-b-line border-l-transparent rounded-[3px] text-left [transition:background_0.2s] laptop:px-3 laptop:py-5.25 laptop:gap-2.75 tablet:px-2.5 tablet:py-4.5 tablet:gap-2.25 phone:px-3.5 phone:py-4 phone:gap-3.25 [&.active]:bg-white [&.active]:border-[#d4d4d4] [&.active]:shadow-[inset_3px_0_0_var(--color-foreground)] ${active === index ? "active" : ""}`}
                 id={`agent-tab-${index}`}
                 role="tab"
                 aria-selected={active === index}
@@ -966,73 +1089,101 @@ export function PopularAgents() {
                   tabRefs.current[next]?.focus();
                 }}
               >
-                <span className="agent-tab-index">0{index + 1}</span>
-                <span className="agent-tab-label">
-                  <strong>{item.name}</strong>
-                  <small>{item.focus}</small>
+                <span className="agent-tab-index font-mono text-[8px] text-[#879176] tablet:text-[7px]">
+                  0{index + 1}
                 </span>
-                <Icon name="arrow" />
+                <span className="agent-tab-label flex flex-col gap-2 flex-1 min-w-0 phone:gap-1">
+                  <strong className="text-[15px] font-normal tracking-[-0.35px] laptop:text-[13px] tablet:text-[12px] tablet:leading-[1.4] phone:text-[14px]">
+                    {item.name}
+                  </strong>
+                  <small className="text-[9px] text-[#7c8471] laptop:text-[8px] tablet:leading-[1.6] phone:text-[9px]">
+                    {item.focus}
+                  </small>
+                </span>
+                <Icon
+                  className="size-3.75 text-[#848d75] [transition:transform_0.2s] transform-[rotate(-45deg)] laptop:size-3.25 tablet:size-3 in-[.agent-tab.active]:transform-[rotate(0)] in-[.agent-tab.active]:text-[#4f6039]"
+                  name="arrow"
+                />
               </button>
             ))}
           </div>
           <a
-            className="text-link"
+            className={`${textLink} gap-7 text-[11px] mt-6 phone:text-[10px] phone:mt-4.75`}
             href="https://www.yoona.ai/demo"
             target="_blank"
             rel="noreferrer"
           >
-            Request demo <Icon name="arrow" />
+            Request demo <Icon className="size-5" name="arrow" />
           </a>
           <a
-            className="agent-source"
+            className="agent-source flex items-center gap-1.75 w-fit mt-5 text-[9px] text-[#7b8370] phone:inline-flex phone:mt-0 phone:text-[8px] phone:ml-5.5 hover:underline"
             href="https://www.yoona.ai/"
             target="_blank"
             rel="noreferrer"
           >
-            Explore on yoona.ai <Icon name="diagonal" />
+            Explore on yoona.ai <Icon className="size-3" name="diagonal" />
           </a>
         </div>
         <div
-          className="agent-panel"
+          className="agent-panel min-w-0"
           id="popular-agent-panel"
           role="tabpanel"
           aria-labelledby={`agent-tab-${active}`}
           tabIndex={0}
         >
           <a
-            className="agent-example-link"
+            className="agent-example-link block"
             href={agent.image}
             target="_blank"
             rel="noreferrer"
             aria-label={`View ${agent.example.toLowerCase()} screenshot at full size`}
           >
-            <div className="agent-screenshot">
+            <div className="agent-screenshot relative aspect-[16/10] border border-[#e0e2d8] rounded-[4px] bg-white overflow-hidden">
               <Image
+                className="p-3.25 object-contain tablet:p-2 phone:p-1.75"
                 src={agent.image}
                 alt={agent.alt}
                 fill
                 sizes="(max-width: 700px) 100vw, 60vw"
               />
             </div>
-            <div className="agent-example-caption">
-              <span>PLATFORM EXAMPLE · {agent.example}</span>
-              <span>
-                View full size <Icon name="diagonal" />
+            <div className="agent-example-caption flex justify-between items-start gap-3.75 mt-3 text-[#777e6e]">
+              <span className="flex-1 min-w-0 text-[7px] leading-[1.7] tracking-[0.65px] phone:text-[6px] phone:tracking-[0.3px]">
+                PLATFORM EXAMPLE · {agent.example}
+              </span>
+              <span className="inline-flex items-center gap-1.5 text-[8px] whitespace-nowrap phone:text-[7px] in-[.agent-example-link:hover]:underline">
+                View full size <Icon className="size-2.75" name="diagonal" />
               </span>
             </div>
           </a>
-          <div className="agent-details" key={agent.name}>
-            <h3>{agent.name}</h3>
-            <p>{agent.description}</p>
-            <span className="agent-analysis-label">WHAT IT ANALYSES</span>
-            <ul className="agent-analysis">
+          <div
+            className="agent-details mt-7 animate-[fade-in_0.3s_ease] phone:mt-6"
+            key={agent.name}
+          >
+            <h3 className="text-[27px] font-normal tracking-[-1px] leading-[1.25] tablet:text-[24px] phone:text-[26px]">
+              {agent.name}
+            </h3>
+            <p className="max-w-170 text-[15px] leading-[1.8] text-copy mt-3.5 tablet:text-[14px]">
+              {agent.description}
+            </p>
+            <span className="agent-analysis-label block mt-6 text-[7px] tracking-[1.3px] text-[#7b846c] phone:mt-5.25">
+              WHAT IT ANALYSES
+            </span>
+            <ul className="agent-analysis mx-0 p-0 flex flex-wrap gap-1.75 list-none mt-2.75 mb-0">
               {agent.analysis.map((item) => (
-                <li key={item}>{item}</li>
+                <li
+                  className="px-2.5 py-1.75 border border-[#dfe4d4] rounded-[3px] text-[9px] text-[#6d775d] bg-white tablet:px-2 tablet:py-1.5 tablet:text-[8px]"
+                  key={item}
+                >
+                  {item}
+                </li>
               ))}
             </ul>
-            <div className="agent-outcome">
-              <Icon name="check" />
-              <p>{agent.outcome}</p>
+            <div className="agent-outcome py-0.75 flex items-start gap-2.5 mt-5.5 border-l-[2px] border-l-[#a0b17f] pr-0 pl-3.25 phone:mt-4.75">
+              <Icon className="size-3.25 text-[#7f9460] mt-0.5" name="check" />
+              <p className="text-[11px] leading-[1.75] text-[#58644a] tablet:text-[10px] phone:text-[11px]">
+                {agent.outcome}
+              </p>
             </div>
           </div>
         </div>
@@ -1079,45 +1230,68 @@ export function Audience() {
   const item = audiences[active];
   return (
     <div className="audience">
-      <div className="audience-options" aria-label="Choose your team">
+      <div
+        className="audience-options flex gap-2.5 border-b border-b-[#d8dccc] pb-4.5 mb-8.75 phone:gap-1.75 phone:pb-4 phone:mb-5.5 phone:flex-wrap"
+        aria-label="Choose your team"
+      >
         {audiences.map((team, i) => (
           <button
             key={team.name}
             aria-pressed={active === i}
-            className={active === i ? "active" : ""}
+            className={`px-4.75 py-3.25 flex items-center gap-7.5 rounded-[3px] border border-[#d4d8c8] bg-transparent text-[11px] [transition:background_0.2s] tablet:px-3 tablet:py-2.75 tablet:gap-3.75 tablet:text-[9px] phone:gap-3 phone:grow phone:last:grow-0 phone:justify-between [&.active]:bg-foreground [&.active]:text-white [&.active]:border-foreground ${active === i ? "active" : ""}`}
             onClick={() => setActive(i)}
           >
             {team.name}
-            <Icon name="diagonal" />
+            <Icon className="size-3.5 phone:size-3" name="diagonal" />
           </button>
         ))}
       </div>
-      <div className="audience-panel" aria-live="polite">
-        <div className="audience-image">
+      <div
+        className="audience-panel grid grid-cols-[1fr_1fr] gap-21.25 items-center laptop:gap-11.25 tablet:gap-8.75 phone:grid-cols-[1fr] phone:gap-6.75"
+        aria-live="polite"
+      >
+        <div className="audience-image relative h-91.25 rounded-[4px] overflow-hidden tablet:h-82.5 phone:h-73.75">
           <Image
+            className="object-[50%_28%] [filter:saturate(0.6)]"
             src={item.image}
             alt={item.alt}
             fill
             sizes="(max-width: 700px) 100vw, 45vw"
           />
-          <span>{item.label}</span>
+          <span className="absolute bottom-5 left-5.5 text-white text-[8px] tracking-[1.4px] text-shadow-[0_1px_6px_#0009]">
+            {item.label}
+          </span>
         </div>
-        <div className="audience-copy" key={item.name}>
-          <span className="audience-index">0{active + 1} / 03</span>
-          <h3>{item.title}</h3>
-          <p>{item.description}</p>
-          <div className="audience-tags">
+        <div
+          className="audience-copy max-w-100 animate-[fade-in_0.35s] phone:max-w-full"
+          key={item.name}
+        >
+          <span className="audience-index text-[9px] text-[#7f8771] font-mono phone:text-[8px]">
+            0{active + 1} / 03
+          </span>
+          <h3 className="text-[37px] leading-[1.15] tracking-[-1.5px] font-normal mt-6.25 mb-4.5 laptop:text-[33px] tablet:text-[29px] phone:my-3.75 phone:text-[32px] phone:max-w-77.5">
+            {item.title}
+          </h3>
+          <p className="text-[15px] leading-[1.8] text-copy tablet:text-[14px]">
+            {item.description}
+          </p>
+          <div className="audience-tags flex flex-wrap gap-1.75 mt-5.75 mb-6.25 tablet:my-4.5 phone:my-4.75">
             {item.tags.map((tag) => (
-              <span key={tag}>{tag}</span>
+              <span
+                className="px-2.5 py-1.5 border border-[#d1d7c4] rounded-[30px] text-[8px] text-[#737c61] tablet:px-2 tablet:py-1.25 tablet:text-[7px] phone:text-[8px]"
+                key={tag}
+              >
+                {tag}
+              </span>
             ))}
           </div>
           <a
-            className="text-link"
+            className={`${textLink} gap-7 text-[11px]`}
             href="https://www.yoona.ai/demo"
             target="_blank"
             rel="noreferrer"
           >
-            Find your starting point <Icon />
+            Find your starting point <Icon className="size-5" />
           </a>
         </div>
       </div>

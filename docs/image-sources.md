@@ -17,6 +17,13 @@ Images are stored locally in `public/images` so the page does not depend on remo
 
 Design references: https://www.artiso.ai/ and https://www.sap.com/germany/index.html. No reference-site code or Artiso/SAP visual assets are included.
 
+## Official Yoona branding
+
+- Branding assets were taken from the logo and favicon references on https://www.yoona.ai/about on 11 November 2026. The downloaded originals are stored locally without redrawing the artwork.
+- `public/images/brand/yoona-logo-white.png`: official 920 × 212 logo and tagline, https://images.squarespace-cdn.com/content/v1/5ff6cc37e6d81d46bdda981e/50cb52de-f236-42fe-b5cd-68e35e6d692b/New+Logo+White.png?format=original. The shared `YoonaLogo` component displays this asset in the header, footer, and illustrative workspace. A CSS brightness filter makes the white artwork readable on light surfaces; the footer uses the original colours.
+- `app/icon.png` and `public/images/brand/yoona-mark.png`: official favicon artwork, https://images.squarespace-cdn.com/content/v1/5ff6cc37e6d81d46bdda981e/25b3725e-b243-4ba0-a65a-b68ac911da24/favicon.ico?format=original. The CDN delivers a PNG, retained as PNG for the browser icon and decorative brand mark.
+- The recreated text wordmarks, decorative “y.” glyph, and custom SVG favicon have been replaced by these official assets.
+
 ## Scroll belt and Build film
 
 - `public/images/puffer-colourways.png`: original AI-generated product study. Generated with the built-in imagegen tool; the final prompt is in `docs/jacket-asset-prompt.md`.

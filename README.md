@@ -1,6 +1,6 @@
 # Yoona landing page
 
-A responsive landing and about page built with Next.js 16 and React 19. Available at `/` and `/about`.
+A responsive landing and about page built with Next.js 16, React 19, and Tailwind CSS 4. Available at `/` and `/about`.
 
 ## Run locally
 
@@ -33,7 +33,9 @@ npm start
 
 - `app/page.tsx`: page content and sections.
 - `app/components/landing.tsx`: navigation, collage, and interactive sections.
-- `app/globals.css`: visual design and responsive layouts.
+- `app/components/styles.ts`: shared Tailwind recipes for containers, headings, section spacing, labels, and links.
+- `app/globals.css`: brand tokens, base accessibility styles, and bespoke illustration/scroll effects.
+- `docs/styling.md`: styling conventions and the boundary between Tailwind utilities and custom CSS.
 - `docs/image-sources.md`: image provenance and design references.
 
 The workflow previews are illustrative presentation content. Demo requests, login, whitepaper, and contact actions link to Yoona’s live services.
