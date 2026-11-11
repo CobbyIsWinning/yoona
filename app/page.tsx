@@ -8,6 +8,7 @@ import {
 } from "./components/styles";
 import Image from "next/image";
 import { YoonaLogo } from "./components/brand";
+import { LeadershipTeam } from "./components/team";
 import {
   Audience,
   FashionCollage,
@@ -222,9 +223,7 @@ export default function Home() {
               turn the knowledge they already have into their next move.
             </p>
             <a
-              href="https://www.yoona.ai/about"
-              target="_blank"
-              rel="noreferrer"
+              href="#leadership"
               className={`${textLink} gap-7 text-[11px] mt-1.75 phone:mt-0.75`}
             >
               Meet the people behind yoona{" "}
@@ -232,6 +231,8 @@ export default function Home() {
             </a>
           </div>
         </section>
+
+        <LeadershipTeam />
 
         <section
           className={`${pageWidth} resources-section px-13.75 py-10 flex items-center bg-white border border-line rounded-[5px] relative overflow-hidden gap-17.5 laptop:px-10 laptop:py-8.75 laptop:gap-11.25 tablet:p-7.5 tablet:gap-8.75 phone:items-start phone:gap-6 phone:flex-col`}
@@ -358,6 +359,12 @@ export default function Home() {
                 href="#about"
               >
                 Our story
+              </a>
+              <a
+                className="text-[10px] flex items-center gap-2.5 text-[#c7cebc] tablet:text-[9px] phone:text-[8px] phone:gap-1 hover:text-accent"
+                href="#leadership"
+              >
+                Leadership & team
               </a>
             </div>
             <div className="flex flex-col gap-3.25 phone:gap-3">

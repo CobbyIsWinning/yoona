@@ -38,3 +38,18 @@ Design references: https://www.artiso.ai/ and https://www.sap.com/germany/index.
 - `public/images/agent-sales-confidence.png`: Yoona’s published trend-fit and attribute analysis example, https://images.squarespace-cdn.com/content/v1/5ff6cc37e6d81d46bdda981e/edc86d4a-b6fc-4567-8a3e-19b2c8cac6a4/Product+Optimizer+3.png
 - `public/images/agent-product-optimizer.png`: Yoona’s original/optimised product comparison and ranked design variants, https://images.squarespace-cdn.com/content/v1/5ff6cc37e6d81d46bdda981e/e3d7b5f5-477e-4aaf-9a73-d4728c7e4423/TF+Evaluator+3.png
 - Screenshots are presented as published platform examples with descriptive captions and links to view them at full size. Displayed scores belong to those examples.
+
+## Leadership and team
+
+Names, roles, and portraits were verified against https://www.yoona.ai/about on 11 November 2026. All eight published profiles are included, with the two co-founders first. The source’s “Costumer Success” typo is normalised to “Customer Success”; regional wording is otherwise preserved.
+
+Portraits use the source CDN’s 750px renditions, stored locally in their delivered PNG or WebP format. The larger originals are not shipped.
+
+- `public/images/team/anna-franziska-michel.png`: Anna Franziska Michel, https://images.squarespace-cdn.com/content/v1/5ff6cc37e6d81d46bdda981e/de4b791c-be6d-47d5-9133-22e3be7dc531/1.png?format=750w
+- `public/images/team/volker-issbruecker.png`: Volker Issbruecker, https://images.squarespace-cdn.com/content/v1/5ff6cc37e6d81d46bdda981e/ba4b230e-d410-457e-8939-8d421bee1500/2.png?format=750w
+- `public/images/team/luize-ferreira.webp`: Luize Ferreira, https://images.squarespace-cdn.com/content/v1/5ff6cc37e6d81d46bdda981e/8c6d9f34-3899-4ceb-bfe1-7731f785e29b/Bildschirmfoto+2026-08-14+um+10.57.55.png?format=750w
+- `public/images/team/miriam-barnhart.png`: Miriam Barnhart, https://images.squarespace-cdn.com/content/v1/5ff6cc37e6d81d46bdda981e/61a4d730-de61-4621-9e01-f503bcb62802/Bildschirmfoto+2026-08-14+um+11.05.08.png?format=750w
+- `public/images/team/elena-nuernberger.webp`: Elena Nürnberger, https://images.squarespace-cdn.com/content/v1/5ff6cc37e6d81d46bdda981e/69785580-4346-419b-8456-e1f9478a8343/Bildschirmfoto+2026-08-14+um+10.56.07.png?format=750w
+- `public/images/team/melisa-cilli.png`: Melisa Cilli, https://images.squarespace-cdn.com/content/v1/5ff6cc37e6d81d46bdda981e/92e7f9b3-e16f-4057-9d11-913b639c0360/Bildschirmfoto+2026-08-14+um+10.57.12.png?format=750w
+- `public/images/team/kamran-valijonov.png`: Kamran Valijonov, https://images.squarespace-cdn.com/content/v1/5ff6cc37e6d81d46bdda981e/15a49fe7-29bd-4680-b0e5-45357bf155c2/4.png?format=750w
+- `public/images/team/sethu-ramanathan.png`: Sethu Ramanathan, https://images.squarespace-cdn.com/content/v1/5ff6cc37e6d81d46bdda981e/69eb3aa5-bc55-475f-ae2f-8c49c2520afc/5.png?format=750w

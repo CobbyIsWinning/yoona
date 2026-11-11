@@ -27,12 +27,14 @@ npm start
 - A credited fashion film below the Build preview. It plays muted when visible, pauses offscreen, and offers native playback controls.
 - Audience-specific content for creative, merchandising, and brand teams.
 - About, whitepaper, demo, and contact sections using Yoona’s existing destinations.
+- Leadership and team profiles with all eight published names, roles, and official portraits from Yoona’s About page.
 - Responsive navigation with Escape-to-close support, visible focus states, and a skip link.
 
 ## Main files
 
 - `app/page.tsx`: page content and sections.
 - `app/components/landing.tsx`: navigation, collage, and interactive sections.
+- `app/components/team.tsx`: leadership and team profiles, rendered on the server.
 - `app/components/styles.ts`: shared Tailwind recipes for containers, headings, section spacing, labels, and links.
 - `app/globals.css`: brand tokens, base accessibility styles, and bespoke illustration/scroll effects.
 - `docs/styling.md`: styling conventions and the boundary between Tailwind utilities and custom CSS.
